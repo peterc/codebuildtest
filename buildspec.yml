@@ -2,8 +2,10 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      ruby: latest
     commands:
-      - gem install http
+      - bundle install
   build:
     commands:
       - ruby get.rb
