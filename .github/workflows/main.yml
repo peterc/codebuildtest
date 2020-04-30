@@ -27,4 +27,6 @@ jobs:
 
     # Runs a set of commands using the runners shell
     - name: Run script
+      env:
+        URL: ${{ secrets.URL }}
       run: ruby get.rb
