@@ -1,0 +1,30 @@
+name: every5
+
+on:
+  schedule:
+    - cron:  '0/5 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+      
+    - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+    
+    - name: Install Bundler
+      run: gem install bundler
+      
+    - name: Bundle update
+      run: bundle update --bundler
+
+    - name: Run bundler
+      run: bundle install
+
+    # Runs a set of commands using the runners shell
+    - name: Run script
+      run: ruby get.rb
